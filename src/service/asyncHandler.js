@@ -12,7 +12,7 @@ export function asyncHandler(fn) {
 
 export const handleError = (error, req, res, next) => {
     if (error) {
-        if (process.env.ENV == "DEV") {
+        if (process.env.ENV == "PRODUCTION") {
             res.status(error["cause"] || 500).json({
                 message: error.message,
                 stack: error.stack,
