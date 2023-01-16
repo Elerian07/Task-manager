@@ -26,10 +26,17 @@ if (process.env.ENV == "PRODUCTION") {
 
     app.use(morgan("COMMON"))
 }
+var whitelist = ['http://https://task-manager-delta-six.vercel.app/']
 var corsOptions = {
-    origin: 'http://https://task-manager-delta-six.vercel.app/',
-    optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+    origin: function (origin, callback) {
+        if (whitelist.indexOf(origin) !== -1) {
+            callback(null, true)
+        } else {
+            callback(new Error('Not allowed by CORS'))
+        }
+    }
 }
+
 app.use(cors(corsOptions))
 
 const port = process.env.PORT;
