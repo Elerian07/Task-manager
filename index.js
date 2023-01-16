@@ -7,7 +7,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url))
 dotenv.config({ path: path.join(__dirname, './config/.env') })
 import tasksRouter from './src/module/Tasks/tasks.router.js'
 import connectDB from "./DB/DBconnection.js";
-import morgan from 'morgan';
+
 import cors from 'cors';
 // import * as indexRouter from "../chat app/src/modules/index.router.js";
 
@@ -18,14 +18,14 @@ app.use(express.static("./view"))
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }))
 // setup port and the baseUrl
-if (process.env.ENV == "dev") {
-    app.use(express.static(path.join(__dirname, './view')))
-    app.use(morgan('dev'))
+// if (process.env.ENV == "dev") {
+//     app.use(express.static(path.join(__dirname, './view')))
+//     app.use(morgan('dev'))
 
-} else {
+// } else {
 
-    app.use(morgan("COMMON"))
-}
+//     app.use(morgan("COMMON"))
+// }
 app.use(cors())
 
 const port = process.env.PORT;
