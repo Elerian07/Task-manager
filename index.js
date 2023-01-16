@@ -26,7 +26,11 @@ if (process.env.ENV == "PRODUCTION") {
 
     app.use(morgan("COMMON"))
 }
-app.use(cors())
+var corsOptions = {
+    origin: 'http://localhost:3000',
+    optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+}
+app.use(cors(corsOptions))
 
 const port = process.env.PORT;
 const baseUrl = process.env.BASEURL
