@@ -32,7 +32,7 @@ if (process.env.ENV == "dev") {
 
 const port = process.env.PORT;
 const baseUrl = process.env.BASEURL
-app.use(express.static(__dirname));
+app.use(express.static(__dirname, './view'));
 
 
 app.use(`${baseUrl}tasks`, tasksRouter)
