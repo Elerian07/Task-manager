@@ -8,6 +8,7 @@ dotenv.config({ path: path.join(__dirname, './config/.env') })
 import tasksRouter from './src/module/Tasks/tasks.router.js'
 import connectDB from "./DB/DBconnection.js";
 import morgan from 'morgan';
+import cors from 'cors';
 // import * as indexRouter from "../chat app/src/modules/index.router.js";
 
 
@@ -25,6 +26,7 @@ if (process.env.ENV == "dev") {
 
     app.use(morgan("COMMON"))
 }
+app.use(cors())
 
 const port = process.env.PORT || 3000;
 const baseUrl = process.env.BASEURL
