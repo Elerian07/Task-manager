@@ -26,7 +26,7 @@ if (process.env.ENV == "PRODUCTION") {
 
     app.use(morgan("COMMON"))
 }
-var whitelist = ['http://https://task-manager-delta-six.vercel.app/']
+var whitelist = ['http://https://task-manager-delta-six.vercel.app/api/v1/tasks']
 var corsOptions = {
     origin: function (origin, callback) {
         if (whitelist.indexOf(origin) !== -1) {
