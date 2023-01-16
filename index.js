@@ -8,7 +8,7 @@ dotenv.config({ path: path.join(__dirname, './config/.env') })
 import tasksRouter from './src/module/Tasks/tasks.router.js'
 import connectDB from "./DB/DBconnection.js";
 import morgan from 'morgan';
-import cors from 'cors';
+
 // import * as indexRouter from "../chat app/src/modules/index.router.js";
 
 
@@ -26,18 +26,9 @@ if (process.env.ENV == "PRODUCTION") {
 
     app.use(morgan("COMMON"))
 }
-var whitelist = ['http://https://task-manager-delta-six.vercel.app/api/v1/tasks']
-var corsOptions = {
-    origin: function (origin, callback) {
-        if (whitelist.indexOf(origin) !== -1) {
-            callback(null, true)
-        } else {
-            callback(new Error('Not allowed by CORS'))
-        }
-    }
-}
 
-app.use(cors(corsOptions))
+
+
 
 const port = process.env.PORT;
 const baseUrl = process.env.BASEURL
