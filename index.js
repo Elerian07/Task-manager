@@ -18,9 +18,9 @@ app.use(express.static("./view"))
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }))
 // setup port and the baseUrl
-if (process.env.ENV == "PRODUCTION") {
+if (process.env.ENV == "dev") {
     app.use(express.static(path.join(__dirname, './view')))
-    app.use(morgan('PRODUCTION'))
+    app.use(morgan('dev'))
 
 } else {
 
