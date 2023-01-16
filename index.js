@@ -17,7 +17,7 @@ app.use(express.static("./view"))
 app.use(express.json());
 // setup port and the baseUrl
 if (process.env.ENV == "dev") {
-    app.use(express.static(path.join(__dirname, './public')))
+    app.use(express.static(path.join(__dirname, './view')))
     app.use(morgan('dev'))
 
 } else {
